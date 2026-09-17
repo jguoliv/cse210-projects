@@ -1,6 +1,5 @@
 # cse210-student-template
 CSE 210
-test
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
