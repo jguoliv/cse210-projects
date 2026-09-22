@@ -1,9 +1,20 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Prep1 World!");
+        Console.Write("What is your first name? ");
+        String name = Console.ReadLine();
+        Console.Write("What is your last name? ");
+        String last_name = Console.ReadLine();
+        Console.Write($"your name is {last_name}, {name} {last_name}.");
     }
 }
+
+
+
+
+
+
