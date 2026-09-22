@@ -6,17 +6,11 @@ class Program
     static void Main(string[] args)
     {
         Console.Write("What is your first name? ");
-        String name = Console.ReadLine();
+        String firstName = Console.ReadLine();
 
         Console.Write("What is your last name? ");
-        String last_name = Console.ReadLine();
+        String lastName = Console.ReadLine();
 
-        Console.Write($"your name is {last_name}, {name} {last_name}.");
+        Console.Write($"your name is {lastName}, {firstName} {lastName}.");
     }
 }
-
-
-
-
-
-
