@@ -1,13 +1,14 @@
 class Journal
 {
     // attributes
-    public List<Entry> _entries = [];
+    public List<Entry> _entries = new List<Entry>();
 
     // behaviors
-    public void AddEntry(string date, string prompt, string response)
+    public void AddEntry(string date, string mood, string prompt, string response)
     {
         Entry newEntry = new Entry();
         newEntry._date = date;
+        newEntry._mood = mood;
         newEntry._prompt = prompt;
         newEntry._response = response;
         _entries.Add(newEntry);
@@ -27,7 +28,7 @@ class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}~{entry._prompt}~{entry._response}");
+                outputFile.WriteLine($"{entry._date}~|~{entry._mood}~|~{entry._prompt}~|~{entry._response}");
             }
         }
     }
@@ -39,13 +40,16 @@ class Journal
 
         foreach (string line in lines)
         {
-            string [] parts = line.
-        }
-    }
+            string[] parts = line.Split("~|~");
 
-    public void RemoveEntry()
-    {
-        
+            Entry entry = new Entry();
+            entry._date = parts[0];
+            entry._mood = parts[1];
+            entry._prompt = parts[2];
+            entry._response = parts[3];
+
+            _entries.Add(entry);
+        }
     }
 }
 
@@ -53,6 +57,7 @@ class Entry
 {
     // attributes
     public string _date = "";
+    public string _mood = "";
     public string _prompt = "";
     public string _response = "";
 
@@ -60,15 +65,10 @@ class Entry
     public void Display()
     {
         Console.WriteLine("");
-        Console.WriteLine($"Date: {_date} - Prompt: {_prompt}");
+        Console.WriteLine($"Date: {_date} - Mood: {_mood}");
+        Console.WriteLine($"Prompt: {_prompt}");
         Console.WriteLine($"{_response}");
     }
-
-    public void Edit()
-    {
-        
-    }
-
 }
 
 class PromptGenerator
@@ -87,6 +87,7 @@ class PromptGenerator
         "What is one small thing that made me smile today?",
         "What is one thing I want to do better tomorrow?"
     ];
+
     // behavior
     public string GetRandomPrompt()
     {
@@ -94,5 +95,4 @@ class PromptGenerator
         int index = random.Next(_prompts.Count);
         return _prompts[index];
     }
-
 }
