@@ -1,6 +1,6 @@
 using System;
 
-// EXCEEDING REQUIREMENTS:
+// Creativity and exceeding requirements:
 // I added an ActivityLog class that keeps a log of every activity the user
 // completes (date, activity name, and seconds). From the menu the user can:
 //   - view the log, including how many times each activity has been done,
