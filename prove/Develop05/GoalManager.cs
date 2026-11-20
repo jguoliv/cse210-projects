@@ -144,7 +144,6 @@ public class GoalManager
             return;
         }
 
-        int oldLevel = GetLevel();
         int points = _goals[number - 1].RecordEvent();
         _score += points;
 
@@ -162,16 +161,11 @@ public class GoalManager
         }
 
         Console.WriteLine($"You now have {_score} points.");
-
-        if (GetLevel() > oldLevel)
-        {
-            Console.WriteLine($"LEVEL UP! You are now Level {GetLevel()}: {GetRank()}!");
-        }
     }
 
     public void ShowScore()
     {
-        Console.WriteLine($"You have {_score} points. Level {GetLevel()}: {GetRank()}");
+        Console.WriteLine($"You have {_score} points.");
     }
 
     public void SaveGoals(string filename)
@@ -256,29 +250,6 @@ public class GoalManager
         }
 
         return null;
-    }
-
-    private int GetLevel()
-    {
-        if (_score < 0)
-        {
-            return 1;
-        }
-
-        return _score / 1000 + 1;
-    }
-
-    private string GetRank()
-    {
-        string[] ranks = { "Beginner", "Seeker", "Disciple", "Pathfinder", "Champion", "Guardian", "Legend" };
-        int index = GetLevel() - 1;
-
-        if (index >= ranks.Length)
-        {
-            index = ranks.Length - 1;
-        }
-
-        return ranks[index];
     }
 
     private string ReadText(string prompt)
